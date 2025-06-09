@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chapter 1.1 Solutions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark light">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js">
+  </script>
+  <script>
+    window.MathJax = {
+        tex: {
+            inlineMath: [['$', '$'], ['\\(', '\\)']],
+            displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        },
+    };
+  </script>
+  <link rel="stylesheet" href="../../../styles.css">
+</head>
+<body>
+  <header>
+    <h1>
+      Solutions to Algorithms, 4th edition by Robert Sedgewick and Kevin Wayne
+    </h1>
+  </header>
+  <main>
+    <h2>Chapter 1</h2>
+    <section class="problem-container">
+      <p>
+        <strong>1.1.1</strong> Give the value of each of the following expressions:
+        <ul>
+          <li>(0 + 15) / 2</li>
+          <li>2.0e-6 * 100000000.1</li>
+          <li>true && false || true && true</li>
+        </ul>
+      </p>
+      <section class="proof">
+        <div class="proof-content"><pre><code class="language-cpp">#include &lt;stdio.h&gt;
+
+int main() {
+  printf("%d\n", (0 + 15) / 2); // output: 7
+  printf("%f\n", (double)2.0e-6 * (double)100000000.1); // output: 200.000000
+  printf("%d\n", true && false || true && true); // output: 1
+  return 0;
+}</code></pre>
+        </div>
+      </section>
+    </section>
+
+    <section class="problem-container">
+      <p>
+        <strong>1.1.2</strong> Give the type and value of each of the following expressions:
+        <ul>
+          <li>(1 + 2.236)/2</li>
+          <li>1 + 2 + 3 + 4.0</li>
+          <li>4.1 &gt;= 4</li>
+          <li>1 + 2 + "3"</li>
+        </ul>
+      </p>
+      <section class="proof">
+        <div class="proof-content"><pre><code class="language-cpp">#include &lt;stdio.h&gt;
+int main() {
+  printf("%d\n", (0 + 15) / 2); // output: 7
+  printf("%f\n", (double)2.0e-6 * (double)100000000.1); // output: 200.000000
+  printf("%d\n", true && false || true && true); // output: 1
+  return 0;
+}</code></pre>
+        </div>
+      </section>
+    </section>
+
+    <section class="problem-container">
+      <p>
+        <strong>1.1.3</strong> Write a program that takes three integer command-line arguments and prints equal if all three are equal, and not equal otherwise.
+      </p>
+      <section class="proof">
+        <div class="proof-content"><pre><code class="language-cpp">#include &lt;stdio.h&gt;
+int main() {
+  printf("%d\n", (0 + 15) / 2); // output: 7
+  printf("%f\n", (double)2.0e-6 * (double)100000000.1); // output: 200.000000
+  printf("%d\n", true && false || true && true); // output: 1
+  return 0;
+}</code></pre>
+        </div>
+      </section>
+    </section>
+
+    <section class="problem-container">
+      <p>
+        <strong>1.1.4</strong> What (if anything) is wrong with each of the following statements?
+        <ul>
+          <li>if (a > b) then c = 0;</li>
+          <li>if a > b { c = 0; }</li>
+          <li>if (a > b) c = 0;</li>
+          <li>if (a > b) c = 0 else b = 0;</li>
+        </ul>
+      </p>
+      <section class="proof">
+        <div class="proof-content"><pre><code class="language-cpp">if (a > b) then c = 0;</code></pre> does not work in Java, as then is not a keyword.
+        </div>
+        <div class="proof-content"><pre><code class="language-cpp">if a > b { c = 0; }</code></pre> does not work in Java, as the boolean expression must be in parentheses.
+        </div>
+        <div class="proof-content"><pre><code class="language-cpp">if (a > b) c = 0;</code></pre> works in Java.
+        </div>
+        <div class="proof-content"><pre><code class="language-cpp">if (a > b) c = 0 else b = 0;</code></pre> does not work in Java, as a semicolon is required before the else clause. That is, after <pre><code>c = 0</code></pre>
+        </div>
+      </section>
+    </section>
+
+
+    <section class="problem-container">
+      <p>
+        <strong>1.1.5</strong> Write a code fragment that prints true if the double variables x and y are both
+strictly between 0 and 1 and false otherwise.
+      </p>
+      <section class="proof">
+        <div class="proof-content"><pre><code class="language-cpp">double x, y;
+cin &gt;&gt; x &gt;&gt; y;
+cout &lt;&lt; (0 &lt; x &amp;&amp; x &lt; 1 &amp;&amp; 0 &lt; y &amp;&amp; y &lt; 1) ? "true" : "false" &lt;&lt; endl;
+        </code></pre>
+        </div>
+      </section>
+    </section>
+
+    <section class="problem-container">
+      <p>
+        <strong>1.1.6</strong> What does the following program print?
+        <pre><code class="language-cpp">int f = 0;
+int g = 1;
+for (int i = 0; i &lt; 15; i++) {
+  cout &lt;&lt; f &lt;&lt; endl;
+  f = f + g;
+  g = f - g;
+}
+        </code></pre>
+      </p>
+      <section class="proof">
+        <div class="proof-content">
+          It prints out the first 15 Fibonacci numbers. We can see that the first 15 Fibonacci numbers are 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377. One can note that this produces the Fibonacci sequence because f starts at 0, g starts at 1, and the sum of f and g is the next number in the sequence, while g is set to the value of the old f.
+        </div>
+      </section>
+    </section>
+
+    <section class="problem-container">
+      <p>
+        <strong>1.1.7</strong> Give the value printed by each of the following code fragments:
+        <ul>
+<li><pre><code class="language-cpp">double t = 9.0;
+while (abs(t - 9.0/t) > .001)
+  t = (9.0/t + t) / 2.0;
+printf("%.5f\n", t); // OUTPUT: 3.00009
+</code></pre>
+</li>
+<li>
+<pre><code class="language-cpp">int sum = 0;
+for (int i = 1; i < 1000; i++) {
+  for (int j = 0; j < i; j++) {
+    sum++;
+  }
+}
+cout &lt;&lt; sum &lt;&lt; endl; // OUTPUT: 499500
+</code></pre>
+</li>
+<li>
+<pre><code class="language-cpp">int sum = 0;
+for (int i = 1; i &lt; 1000; i *= 2) {
+  for (int j = 0; j &lt; i; j++) {
+    sum++;
+  }
+}
+cout &lt;&lt; sum &lt;&lt; endl; // OUTPUT: 1023
+</code></pre>
+</li>
+</ul>
+      </p>
+      <section class="proof">
+        <div class="proof-content">
+          The first code prints the double to a precision of 5 decimals. The second one prints the sum of all digits from 1 to 999. That is, 999 * 1000 / 2. The third one prints the sum of 2^n for 2^n < 1000. More specifically, n = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9. That is, the result is 2^10 - 1 = 1023.
+        </div>
+      </section>
+    </section>
+
+    <section class="problem-container">
+      <p>
+        <strong>1.1.8</strong> What do each of the following print?
+        <ul>
+<li><pre><code class="language-cpp">double t = 9.0;
+while (abs(t - 9.0/t) > .001)
+  t = (9.0/t + t) / 2.0;
+printf("%.5f\n", t); // OUTPUT: 3.00009
+</code></pre>
+</li>
+<li>
+<pre><code class="language-cpp">int sum = 0;
+for (int i = 1; i < 1000; i++) {
+  for (int j = 0; j < i; j++) {
+    sum++;
+  }
+}
+cout &lt;&lt; sum &lt;&lt; endl; // OUTPUT: 499500
+</code></pre>
+</li>
+<li>
+<pre><code class="language-cpp">int sum = 0;
+for (int i = 1; i &lt; 1000; i *= 2) {
+  for (int j = 0; j &lt; i; j++) {
+    sum++;
+  }
+}
+cout &lt;&lt; sum &lt;&lt; endl; // OUTPUT: 1023
+</code></pre>
+</li>
+</ul>
+      </p>
+      <section class="proof">
+        <div class="proof-content">
+          The first code prints the double to a precision of 5 decimals. The second one prints the sum of all digits from 1 to 999. That is, 999 * 1000 / 2. The third one prints the sum of 2^n for 2^n < 1000. More specifically, n = 0, 1, 2, 3, 4, 5, 6, 7, 8, 9. That is, the result is 2^10 - 1 = 1023.
+        </div>
+      </section>
+    </section>
+
+    <section class="problem-container">
+      <p>
+        <strong>1.1.20</strong> Write a recursive static method that computes the value of $\log (N !)$.
+      </p>
+      <section class="proof">
+        <div class="proof-content">We first note that
+        \[
+          \log(N!) = \log \left( \prod_{i=1}^n i \right) = \sum_{i=1}^n \log(i),
+        \]
+        thus we may write the code as <pre><code class="language-cpp">double lnFactorial(int n) {
+  if (n == 1) {
+    return 0.0;
+  }
+  return Math.log(n) + lnFactorial(n - 1);
+}</code></pre>     
+        </div>
+      </section>
+    </section>
+
+    <section class="problem-container">
+      <p>
+        <strong>1.1.22</strong> Write a version of BinarySearch that uses the recursive rank() given on page 25 and traces the method calls. Each time the recursive method is called, print the argument values lo and hi, indented by the depth of the recursion. <strong>Hint</strong>: Add an argument to the recursive method that keeps track of the depth. 
+      </p>
+      <section class="proof">
+        <div class="proof-content">    
+        </div>
+      </section>
+    </section>
+  </main>
+</body>
+</html>
+
+
